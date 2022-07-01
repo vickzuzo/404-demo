@@ -1,0 +1,310 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --primary: hsl(38, 69%, 59%);
+  --text: hsl(38, 8%, 8%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --font: "Space Grotesk", sans-serif;
+  --lg: 2.375rem;
+  --md: 0.938rem;
+  --sm: 0.75rem;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 1024px) {
+  :root {
+    --lg: 5rem;
+    --md: 1rem;
+    --sm: 0.813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--md);
+  font-weight: 500;
+  color: var(--text);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1024px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.main {
+  overflow: hidden; /* For the animations ScrollReveal */
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav_logo,
+.nav_toggle {
+  color: var(--text);
+  display: inline-flex;
+}
+
+.nav_logo {
+  font-weight: 700;
+}
+
+.nav_toggle {
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .nav_menu {
+    position: fixed;
+    background-color: var(--primary);
+    left: 0;
+    top: -100%;
+    width: 100%;
+    padding: 5rem 0 4rem;
+    border-radius: 0 0 1.5rem 1.5rem;
+    box-shadow: 0 2px 4px hsla(38, 4%, 15%, 0.15);
+    transition: 0.4s;
+  }
+}
+
+.nav_list {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.nav_link {
+  color: var(--text);
+}
+
+.nav_close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.show-menu {
+  top: 0;
+}
+
+/*=============== HOME ===============*/
+
+.home {
+  background-color: var(--primary);
+  padding: 9rem 0 2rem;
+  display: grid;
+  height: 100vh;
+}
+
+.home_container {
+  display: grid;
+  align-content: center;
+  row-gap: 2.5rem;
+}
+
+.home_data {
+  text-align: center;
+}
+
+.home_subtitle {
+  display: block;
+  font-weight: bold;
+}
+
+.home_title {
+  font-size: var(--lg);
+  margin: 0.75rem 0;
+}
+
+.home_button {
+  margin-top: 2rem;
+  display: inline-block;
+  background-color: var(--text);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4rem;
+  transition: 0.3s ease;
+}
+
+.home_button:hover {
+  box-shadow: 0 4px 12px hsla(38, 69%, 8%, 0.2);
+}
+
+.home_img img {
+  width: 230px;
+  animation: float 5s infinite alternate ease-in-out;
+}
+
+.home_img {
+  justify-self: center;
+}
+
+.home_img_shadow {
+  width: 150px;
+  height: 30px;
+  background-color: hsla(38, 21%, 19%, 0.26);
+  border-radius: 100%;
+  margin: 0 auto;
+  filter: blur(9px);
+  animation: shadow 5s infinite alternate ease-in-out;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  column-gap: 0.5rem;
+  font-size: var(--sm);
+  align-self: flex-end;
+}
+
+/* ANIMATIONS */
+@keyframes float {
+  0% {
+    transform: rotate(0deg) /* A */ translateX(30px) /* X */ rotate(0deg); /* -A — since A = 0, no need for the minus sign */
+  }
+  100% {
+    transform: rotate(-180deg) /* A */ translateX(30px) /* X */ rotate(180deg); /* -A */
+  }
+}
+/* @keyframes float {
+  0% {
+     transform: translateY(0); 
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+   transform: translateY(15px); 
+    transform: translate3d(0, 15px, 0);
+  }
+}
+*/
+
+@keyframes shadow {
+  0% {
+    transform: rotate(0deg) scale(0.85, 0.85) translateX(30px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(-180deg) scale(0.85, 0.85) translateX(30px) rotate(180deg);
+  }
+}
+
+/*=============== BREAKPOINTS ===============*/
+
+/* For small devices */
+
+@media screen and (max-width: 320px) {
+  .home {
+    padding-top: 7rem;
+  }
+}
+
+/* For medium devices */
+
+@media screen and (min-width: 767px) {
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+  }
+  .nav_toggle,
+  .nav_close {
+    display: none;
+  }
+  .nav_list {
+    flex-direction: row;
+    column-gap: 3.5rem;
+  }
+}
+
+/* For large devices */
+
+@media screen and (min-width: 1024px) {
+  .home_container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    column-gap: 2rem;
+  }
+  .home_data {
+    text-align: initial;
+  }
+  .home_img img {
+    width: 400px;
+  }
+  .home_img_shadow {
+    width: 250px;
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 1048px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* For 2K resolutions (2048 x 1152, 2048 x 1536) */
+
+@media screen and (min-width: 2048px) {
+  body {
+    zoom: 1.7;
+  }
+
+  .home {
+    height: initial;
+    row-gap: 4rem;
+  }
+}
+
+/* For 4K resolutions (3840 x 2160, 4096 x 2160) */
+
+@media screen and (min-width: 3840px) {
+  body {
+    zoom: 3.1;
+  }
+}
